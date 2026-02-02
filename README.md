@@ -6,6 +6,11 @@
     python main.py
 ```
 
+### 拉取最新版代码
+```bash
+    git pull origin main
+```
+
 ### 第一次运行环境准备
 1. 新建Python虚拟环境
 ```bash
