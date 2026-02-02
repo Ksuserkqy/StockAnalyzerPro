@@ -1,14 +1,24 @@
-```bash
-    python -m venv .venv
-    source .venv/bin/activate (Mac)
-    .\.venv\Scripts\activate (Windows)
-    pip install -r requirements.txt
-    python main.py
-```
+现在给你删掉了呵呵
 
 ### 拉取最新版代码
 ```bash
     git pull origin main
+```
+
+### 后续运行
+1. 激活虚拟环境
+- MacOS/Linux:
+```bash
+    source .venv/bin/activate
+```
+- Windows:
+```bash
+    .\.venv\Scripts\activate
+``` 
+
+2. 运行程序
+```bash
+    python main.py
 ```
 
 ### 第一次运行环境准备
@@ -38,21 +48,6 @@
     python main.py
 ```
 
-### 后续运行
-1. 激活虚拟环境
-- MacOS/Linux:
-```bash
-    source .venv/bin/activate
-```
-- Windows:
-```bash
-    .\.venv\Scripts\activate
-``` 
-
-2. 运行程序
-```bash
-    python main.py
-```
 
 **By 烤全羊KQY**
 
