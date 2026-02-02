@@ -4,6 +4,19 @@ import os
 for k in ["HTTP_PROXY","HTTPS_PROXY","ALL_PROXY","http_proxy","https_proxy","all_proxy"]:
     os.environ.pop(k, None)
 
+import requests
+from akshare import stock
+
+# 修改全局配置：增加重试次数
+requests.adapters.DEFAULT_RETRIES = 5  # 最大重试次数
+session = requests.Session()
+adapter = requests.adapters.HTTPAdapter(max_retries=5)
+session.mount('http://', adapter)
+session.mount('https://', adapter)
+
+# 让 akshare 使用新的 session
+stock.set_session(session)
+
 
 import pandas as pd
 from rich.console import Console
@@ -13,6 +26,7 @@ from config import settings
 from data_provider import AkshareProvider
 from llm_client import DeepSeekLLM
 from prompt import SYSTEM_PROMPT, USER_TEMPLATE
+
 
 console = Console()
 
