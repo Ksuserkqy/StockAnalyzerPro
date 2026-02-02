@@ -1,21 +1,8 @@
 from __future__ import annotations
 import os
 
-for k in ["HTTP_PROXY","HTTPS_PROXY","ALL_PROXY","http_proxy","https_proxy","all_proxy"]:
-    os.environ.pop(k, None)
-
-import requests
-from akshare import stock
-
-# 修改全局配置：增加重试次数
-requests.adapters.DEFAULT_RETRIES = 5  # 最大重试次数
-session = requests.Session()
-adapter = requests.adapters.HTTPAdapter(max_retries=5)
-session.mount('http://', adapter)
-session.mount('https://', adapter)
-
-# 让 akshare 使用新的 session
-stock.set_session(session)
+# for k in ["HTTP_PROXY","HTTPS_PROXY","ALL_PROXY","http_proxy","https_proxy","all_proxy"]:
+#     os.environ.pop(k, None)
 
 
 import pandas as pd
