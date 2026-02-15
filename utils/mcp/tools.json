@@ -1,0 +1,1232 @@
+{
+  "jsonrpc": "2.0",
+  "id": "05ca0755-b0c3-4031-b724-08fc6ae92017",
+  "result": {
+    "tools": [
+      {
+        "name": "list_news",
+        "title": "新闻与资讯",
+        "description": "通过时间范围、标题关键词、情绪倾向、新闻类型、新闻等级、股票代码、行业代码或概念代码等多维度条件筛选新闻资讯，返回包括新闻ID、发布时间、类型、标题、摘要、关键点、影响分析、投资机会与风险、情绪得分与分析、主题代码及新闻等级等核心信息，适用于市场监测、投资决策和舆情分析等场景。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "sentiment": {
+              "type": "integer",
+              "description": "情绪偏向",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "pageSize": {
+              "type": "integer",
+              "description": "页长。\n最小值: 1;\n最大值: 500;",
+              "example": 10,
+              "items": { "type": "integer" },
+              "default": 10
+            },
+            "beginTime": {
+              "type": "string",
+              "description": "开始时间（格式yyyy-MM-dd HH:mm:ss）（格式:yyyy-MM-dd HH:mm:ss）。\n最小值: 2020-01-01 00: 00: 00;",
+              "example": "2020-01-01 08: 00: 00",
+              "items": { "type": "string" },
+              "default": "2020-01-01 08: 00: 00"
+            },
+            "endTime": {
+              "type": "string",
+              "description": "结束时间（格式yyyy-MM-dd HH:mm:ss）（格式:yyyy-MM-dd HH:mm:ss）",
+              "example": "2025-02-01 08: 00: 00",
+              "items": { "type": "string" },
+              "default": "2025-02-01 08: 00: 00"
+            },
+            "title": {
+              "type": "string",
+              "description": "标题",
+              "example": "人工智能",
+              "items": { "type": "string" },
+              "default": "人工智能"
+            },
+            "pageNum": {
+              "type": "integer",
+              "description": "页码。\n最小值: 1;",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "newsType": {
+              "type": "integer",
+              "description": "新闻类型",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "newsLevel": {
+              "type": "integer",
+              "description": "新闻等级",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            }
+          },
+          "required": []
+        }
+      },
+      {
+        "name": "list_stock_share_adj_factors",
+        "title": "股票前复权因子",
+        "description": "通过股票代码和日期范围查询指定股票的历史除权除息事件详情，包括除权除息日、每股派现、送股比例、转增比例、配股比例、配股价以及前复权因子等关键数据，用于股票价格调整和财务分析。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "beginDate": {
+              "type": "string",
+              "description": "开始日期（格式yyyy-MM-dd）。\n最小值: 2020-01-01;",
+              "example": "2020-01-01",
+              "items": { "type": "string" },
+              "default": "2020-01-01"
+            },
+            "endDate": {
+              "type": "string",
+              "description": "结束日期（格式yyyy-MM-dd）",
+              "example": "2025-01-01",
+              "items": { "type": "string" },
+              "default": "2025-01-01"
+            },
+            "pageSize": {
+              "type": "integer",
+              "description": "页长。\n最小值: 1;\n最大值: 500;",
+              "example": 10,
+              "items": { "type": "integer" },
+              "default": 10
+            },
+            "pageNum": {
+              "type": "integer",
+              "description": "页码。\n最小值: 1;",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "002594",
+              "items": { "type": "string" },
+              "default": "002594"
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "list_stock_performance_metrics",
+        "title": "股票日行情指标",
+        "description": "通过股票代码和可选的日期范围，查询指定个股在特定交易日内的表现指标，包括股票基本信息、涨跌状态、连续涨跌天数、连续涨跌停天数以及多个时间维度（如历史、年内、本月、本周、近一周、近一月、近三月、近六月、近一年）内是否创下新高或新低的标志，适用于分析个股的短期动量、价格突破和历史表现趋势。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "beginDate": {
+              "type": "string",
+              "description": "开始日期（格式yyyy-MM-dd）。\n最小值: 2020-01-01;",
+              "example": "2020-01-01",
+              "items": { "type": "string" },
+              "default": "2020-01-01"
+            },
+            "endDate": {
+              "type": "string",
+              "description": "结束日期（格式yyyy-MM-dd）",
+              "example": "2025-01-01",
+              "items": { "type": "string" },
+              "default": "2025-01-01"
+            },
+            "pageSize": {
+              "type": "integer",
+              "description": "页长。\n最小值: 1;\n最大值: 500;",
+              "example": 10,
+              "items": { "type": "integer" },
+              "default": 10
+            },
+            "pageNum": {
+              "type": "integer",
+              "description": "页码。\n最小值: 1;",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "002594",
+              "items": { "type": "string" },
+              "default": "002594"
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "get_stock_score",
+        "title": "股票综合得分",
+        "description": "通过股票代码获取股票的综合得分数据，包括情绪面得分、财务面得分、赛道得分、技术得分及其行业平均值，同时提供股票所属的申万三级行业代码和名称，适用于股票分析和投资决策。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "000001",
+              "items": { "type": "string" },
+              "default": "000001"
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "get_stock_finance_profit_ability",
+        "title": "股票盈利能力的最新指标",
+        "description": "通过股票代码获取公司盈利能力的最新指标，包括毛利率、营业利润率、净利率、股本回报率(ROE)、资产回报率(ROA)、资本回报率、杜邦分析指标等核心财务数据，并提供各项指标的当前排名和历史排名（0-100），便于大模型进行财务分析和投资决策。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "get_stock_finance_profit_ability_hist",
+        "title": "股票盈利能力的历史指标",
+        "description": "通过股票代码和类型（年度或季度）查询股票的历史盈利能力指标，包括毛利率、营业利润率、净利率、股本回报率(ROE)、资产回报率(ROA)、资本回报率、杜邦分析指标等核心财务数据及其行业排名和历史排名，适用于财务分析和股票投资决策。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "类型",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            }
+          },
+          "required": ["stockCode", "type"]
+        }
+      },
+      {
+        "name": "get_company_profiles",
+        "title": "股票所属公司的基本信息",
+        "description": "通过股票代码查询股票所属公司的基本信息，包括公司代码、股票代码、股票名称、公司全称、简称、中英文名称、注册信息、注册资本、主营业务、联系方式、办公及注册地址、公司网址等详细信息，适用于获取上市公司基础信息进行投资分析或公司研究。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "000001",
+              "items": { "type": "string" },
+              "default": "000001"
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "get_stock_finance_growth_ability",
+        "title": "股票成长能力的最新指标",
+        "description": "通过股票代码获取指定股票的最新成长能力指标数据，包括3年每股收入增长率、每股收益增长率、总收入增长率、每股股息折旧及摊销增长率、扣非每股收益增长率、每股自由现金流增长率、每股账面价值增长率等核心指标及其行业排名和历史排名，同时提供成长能力综合得分，便于大模型进行股票成长性分析和评估。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "get_stock_finance_growth_ability_hist",
+        "title": "股票成长能力的历史指标",
+        "description": "通过股票代码和类型（年度或季度）查询股票的历史成长能力指标，包括每股收益增长率、每股收入增长率、总收入增长率、每股股息增长率、每股自由现金流增长率、每股账面价值增长率等核心数据，并提供行业排名和历史排名信息，便于大模型进行股票成长能力的长期趋势分析。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "类型",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            }
+          },
+          "required": ["stockCode", "type"]
+        }
+      },
+      {
+        "name": "get_stock_finance_strength",
+        "title": "股票财务实力的最新指标",
+        "description": "通过股票代码获取公司财务实力的最新指标，包括现金负债率、股东权益比率、利息保障倍数等关键财务指标及其行业和历史排名，以及基本面趋势、破产风险和财务造假嫌疑等综合评分，适用于财务分析和风险评估。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "get_fin_health_history",
+        "title": "股票财务实力的历史指标",
+        "description": "通过股票代码和类型（年度或季度）查询财务实力的历史指标，包括现金负债率、股东权益比率、利息保障倍数等核心财务指标及其行业和历史排名，以及基本面趋势、破产风险和财务造假嫌疑等综合评分，适用于财务分析和风险评估。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "类型",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            }
+          },
+          "required": ["stockCode", "type"]
+        }
+      },
+      {
+        "name": "list_announcements",
+        "title": "上市公司的公告",
+        "description": "支持通过公告标识、日期范围、股票代码、标题关键词等条件组合查询上市公司公告，返回公告基础信息（标题、发布日期）、内容详情（全文、风险类型）、附件信息（URL、有无附件）等完整字段，适用于金融资讯展示、企业公告管理及数据分析等场景，实现精准高效的公告信息获取与处理。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "beginDate": {
+              "type": "string",
+              "description": "开始日期（格式yyyy-MM-dd）。\n最小值: 2020-01-01;",
+              "example": "2020-01-01",
+              "items": { "type": "string" },
+              "default": "2020-01-01"
+            },
+            "endDate": {
+              "type": "string",
+              "description": "结束日期（格式yyyy-MM-dd）",
+              "example": "2020-01-02",
+              "items": { "type": "string" },
+              "default": "2020-01-02"
+            },
+            "announcementID": {
+              "type": "integer",
+              "description": "公告id",
+              "example": 9128035,
+              "items": { "type": "integer" },
+              "default": 9128035
+            },
+            "pageSize": {
+              "type": "integer",
+              "description": "页长。\n最小值: 1;\n最大值: 500;",
+              "example": 10,
+              "items": { "type": "integer" },
+              "default": 10
+            },
+            "title": {
+              "type": "string",
+              "description": "标题（支持模糊查询）",
+              "example": "贵州茅台利润大涨",
+              "items": { "type": "string" },
+              "default": "贵州茅台利润大涨"
+            },
+            "pageNum": {
+              "type": "integer",
+              "description": "页码。\n最小值: 1;",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "000001",
+              "items": { "type": "string" },
+              "default": "000001"
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "get_market_change_ratio_status",
+        "title": "市场涨跌分布",
+        "description": "获取当前市场实时涨跌分布数据，包含上涨、下跌和平盘的股票数量，以及涨跌幅不同区间的股票具体数量，如涨停、跌停、涨跌幅超过8%、6%-8%、2%-6%、0%-2%等区间分布，便于大模型全面分析市场热度和情绪。",
+        "inputSchema": { "type": "object", "properties": {}, "required": [] }
+      },
+      {
+        "name": "get_trade_special_date",
+        "title": "交易日历衍生",
+        "description": "根据指定交易日期，返回A股市场相关的交易日衍生日期，包括前后N个交易日、近一周、近一月、近一年、以及当前周/月/年的首尾交易日，便于大模型进行时间维度的数据分析和策略计算。返回日期统一为yyyy-MM-dd HH:mm:ss格式。\n上述时间范围均以指定的tradeDate作为基准日期推算得出。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "tradeDate": {
+              "type": "string",
+              "description": "交易日期(格式yyyy-MM-dd)",
+              "example": "2025-05-19",
+              "items": { "type": "string" },
+              "default": "2025-05-19"
+            }
+          },
+          "required": []
+        }
+      },
+      {
+        "name": "get_stock_quote_realtime",
+        "title": "沪深京最新实时日行情",
+        "description": "获取指定沪深京股票的最新实时行情数据，包含股票当前价格、涨跌幅、开盘价、最高价、最低价、成交量、成交金额等核心数据，同时提供行业代码和行业名称信息，便于大模型进行即时的市场监测和股票分析，单次请求需指定股票代码。时间格式为yyyy-MM-dd HH:mm:ss",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "002594",
+              "items": { "type": "string" },
+              "default": "002594"
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "get_stock_realtime_quote_merge",
+        "title": "沪深京股票及关联的板块最新实时日行情",
+        "description": "实时查询指定沪深京股票的最新行情数据，包括当前价格、涨跌幅、成交量与成交额等核心数据，以及关联的行业和概念板块的实时指数、涨跌幅、成交量等行情信息，支持单一股票代码查询。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "600839",
+              "items": { "type": "string" },
+              "default": "600839"
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "get_stock_financial_strength_ext_hist",
+        "title": "股票财务实力的扩展历史指标(按季度)",
+        "description": "通过股票代码获取财务实力的扩展历史指标（按季度），包括现金负债率、股东权益比率、利息保障倍数等核心财务指标及其行业和历史排名，适用于财务分析和风险评估。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "list_report_stock_forecast_ratings",
+        "title": "股票研报预测评级",
+        "description": "通过股票代码、研究报告标识、研究机构代码、报告标题、投资评级及时间范围等条件，查询个股研究报告的预测评级数据，包括未来1-3年的每股收益预测、净利润预测、目标价调整、投资评级描述等核心指标，适用于股票投资分析和研究报告筛选。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "beginDate": {
+              "type": "string",
+              "description": "起始日期。\n最小值: 2020-01-01;",
+              "example": "2020-01-01",
+              "items": { "type": "string" },
+              "default": "2020-01-01"
+            },
+            "endDate": {
+              "type": "string",
+              "description": "截止日期",
+              "example": "2025-05-01",
+              "items": { "type": "string" },
+              "default": "2025-05-01"
+            },
+            "pageSize": {
+              "type": "integer",
+              "description": "页长。\n最小值: 1;\n最大值: 500;",
+              "example": 10,
+              "items": { "type": "integer" },
+              "default": 10
+            },
+            "pageNum": {
+              "type": "integer",
+              "description": "页码。\n最小值: 1;",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "000001",
+              "items": { "type": "string" },
+              "default": "000001"
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "get_stock_finance_valuation",
+        "title": "股票估值的最新指标",
+        "description": "使用股票代码获取指定股票的最新估值指标数据，包含市盈率、市净率、市销率、企业价值倍数等核心估值指标及其行业排名和历史排名，帮助分析股票估值水平和相对市场位置。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "get_stock_finance_valuation_hist",
+        "title": "股票估值的历史指标",
+        "description": "通过股票代码和类型（年度或季度）查询股票的历史估值指标，包括市盈率、市净率、市销率、企业价值倍数等多种估值指标的当前值、行业排名及历史排名，适用于股票估值分析和投资决策。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "类型",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            }
+          },
+          "required": ["stockCode", "type"]
+        }
+      },
+      {
+        "name": "get_report_earnings_forecast_rating",
+        "title": "股票研报预测评级变动",
+        "description": "通过股票代码、证券类型、市场类型或报告ID查询股票的盈利预测和投资评级变动数据，包括T+1、T+2、T+3年的盈利预测变动、投资评级变动、目标价格变动及其原因，适用于股票分析和投资决策支持。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "000001",
+              "items": { "type": "string" },
+              "default": "000001"
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "get_stock_finance_industry_compare",
+        "title": "股票财务指标的同行业对比",
+        "description": "通过股票代码、行业类型和财务指标，获取指定股票在同行中的财务指标对比数据，包括当前值、行业排名和历史排名，适用于财务分析和行业比较。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "行业类型",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            },
+            "key": {
+              "type": "string",
+              "description": "指标",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            }
+          },
+          "required": ["stockCode", "type", "key"]
+        }
+      },
+      {
+        "name": "get_cn_trade_calender_list",
+        "title": "交易日历列表",
+        "description": "返回指定周期内的A股市场交易日列表，支持近一个月（M1）、近三个月（M3）、近六个月（M6）和近一年（Y1，默认），日期格式统一为yyyy-MM-dd。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "cycle": {
+              "type": "string",
+              "description": "周期",
+              "example": "Y1",
+              "items": { "type": "string" },
+              "default": "Y1"
+            }
+          },
+          "required": ["cycle"]
+        }
+      },
+      {
+        "name": "get_announcement_content",
+        "title": "上市公司的公告原文",
+        "description": "通过公告ID获取上市公司的公告详细内容，包括公告标题和完整正文，适用于公告内容展示、文本分析等场景。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "announcementId": {
+              "type": "integer",
+              "description": "公告ID",
+              "example": 9128035,
+              "items": { "type": "integer" },
+              "default": 9128035
+            },
+            "contentLength": {
+              "type": "integer",
+              "description": "内容长度（最大2000，默认2000）。\n最小值: 1;\n最大值: 2000;",
+              "example": 2000,
+              "items": { "type": "integer" },
+              "default": 2000
+            }
+          },
+          "required": ["announcementId"]
+        }
+      },
+      {
+        "name": "get_stock_basic_info",
+        "title": "股票基本信息",
+        "description": "通过股票代码查询股票的基本信息，包括股票名称、行业代码、发行日期、上市日期、证券标识、上市状态、板块代码、退市日期、外资行业分类、交易所行业分类、今日投资行业分类、申万行业分类、中信行业分类、通达信行业分类等多级行业分类信息，适用于股票信息查询和行业分析。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "000001",
+              "items": { "type": "string" },
+              "default": "000001"
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "list_entity_related_news",
+        "title": "实体的相关新闻",
+        "description": "通过股票代码、行业代码或概念代码查询相关实体的新闻数据，支持按时间范围、新闻类型、新闻等级、情感倾向等多条件筛选，返回新闻标题、摘要、关键点、影响分析、投资机会与风险、情感得分及分析等核心信息，适用于市场监测、投资分析和舆情跟踪。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "sentiment": {
+              "type": "integer",
+              "description": "情绪偏向",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "conceptCode": {
+              "type": "string",
+              "description": "概念代码",
+              "example": "CLS81936",
+              "items": { "type": "string" },
+              "default": "CLS81936"
+            },
+            "pageSize": {
+              "type": "integer",
+              "description": "页长。\n最小值: 1;\n最大值: 500;",
+              "example": 10,
+              "items": { "type": "integer" },
+              "default": 10
+            },
+            "beginTime": {
+              "type": "string",
+              "description": "开始日期（格式yyyy-MM-dd HH:mm:ss）（格式:yyyy-MM-dd HH:mm:ss）。\n最小值: 2020-01-01 00: 00: 00;",
+              "example": "2020-01-01 08: 00: 00",
+              "items": { "type": "string" },
+              "default": "2020-01-01 08: 00: 00"
+            },
+            "endTime": {
+              "type": "string",
+              "description": "结束时间（格式yyyy-MM-dd HH:mm:ss）（格式:yyyy-MM-dd HH:mm:ss）",
+              "example": "2025-02-01 08: 00: 00",
+              "items": { "type": "string" },
+              "default": "2025-02-01 08: 00: 00"
+            },
+            "title": {
+              "type": "string",
+              "description": "标题",
+              "example": "人工智能",
+              "items": { "type": "string" },
+              "default": "人工智能"
+            },
+            "pageNum": {
+              "type": "integer",
+              "description": "页码。\n最小值: 1;",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "newsType": {
+              "type": "integer",
+              "description": "新闻类型",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "newsLevel": {
+              "type": "integer",
+              "description": "新闻等级",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "600839",
+              "items": { "type": "string" },
+              "default": "600839"
+            },
+            "industryCode": {
+              "type": "string",
+              "description": "行业代码",
+              "example": "370000",
+              "items": { "type": "string" },
+              "default": "370000"
+            },
+            "minRelevance": {
+              "type": "integer",
+              "description": "实体的相关度下限。\n最小值: 1;\n最大值: 5;",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            }
+          },
+          "required": []
+        }
+      },
+      {
+        "name": "list_stock_unadjusted_quotes",
+        "title": "股票未复权日行情",
+        "description": "使用股票代码和时间范围查询股票的未复权行情数据，包括股票基本信息、行情时间、前收盘价、开盘价、最高价、最低价、最新价、成交量和成交金额等核心数据，适用于历史行情分析和数据回溯。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "beginDate": {
+              "type": "string",
+              "description": "开始日期（格式yyyy-MM-dd）。\n最小值: 2020-01-01;",
+              "example": "2020-01-01",
+              "items": { "type": "string" },
+              "default": "2020-01-01"
+            },
+            "endDate": {
+              "type": "string",
+              "description": "结束日期（格式yyyy-MM-dd）",
+              "example": "2025-01-01",
+              "items": { "type": "string" },
+              "default": "2025-01-01"
+            },
+            "pageSize": {
+              "type": "integer",
+              "description": "页长。\n最小值: 1;\n最大值: 500;",
+              "example": 10,
+              "items": { "type": "integer" },
+              "default": 10
+            },
+            "pageNum": {
+              "type": "integer",
+              "description": "页码。\n最小值: 1;",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "002594",
+              "items": { "type": "string" },
+              "default": "002594"
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "list_research_sentiment",
+        "title": "研报舆情",
+        "description": "通过研报ID、标题模糊查询、股票代码、行业代码、概念代码、发布时间范围及情绪倾向等多条件组合筛选，获取研报的衍生信息，包括核心内容、分析观点、投资机会与风险、情绪分析等关键数据，适用于投资决策支持和市场情绪分析。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "sentiment": {
+              "type": "integer",
+              "description": "情绪偏向",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "institutionCode": {
+              "type": "integer",
+              "description": "机构代码",
+              "example": 142,
+              "items": { "type": "integer" },
+              "default": 142
+            },
+            "guid": {
+              "type": "string",
+              "description": "报告id",
+              "example": "0236EC2B-2416-455E-BF82-E4ED96E91DB0",
+              "items": { "type": "string" },
+              "default": "0236EC2B-2416-455E-BF82-E4ED96E91DB0"
+            },
+            "conceptCode": {
+              "type": "string",
+              "description": "概念代码",
+              "example": "CLS81936",
+              "items": { "type": "string" },
+              "default": "CLS81936"
+            },
+            "pageSize": {
+              "type": "integer",
+              "description": "页长。\n最小值: 1;\n最大值: 500;",
+              "example": 10,
+              "items": { "type": "integer" },
+              "default": 10
+            },
+            "beginTime": {
+              "type": "string",
+              "description": "发布开始时间（格式:yyyy-MM-dd HH:mm:ss）。\n最小值: 2020-01-01;",
+              "example": "2020-01-01 08: 00: 00",
+              "items": { "type": "string" },
+              "default": "2020-01-01 08: 00: 00"
+            },
+            "endTime": {
+              "type": "string",
+              "description": "发布截止时间（格式:yyyy-MM-dd HH:mm:ss）",
+              "example": "2025-01-02 08: 00: 00",
+              "items": { "type": "string" },
+              "default": "2025-01-02 08: 00: 00"
+            },
+            "title": {
+              "type": "string",
+              "description": "标题(模糊查询)",
+              "example": "宏观",
+              "items": { "type": "string" },
+              "default": "宏观"
+            },
+            "pageNum": {
+              "type": "integer",
+              "description": "页码。\n最小值: 1;",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "000001",
+              "items": { "type": "string" },
+              "default": "000001"
+            },
+            "industryCode": {
+              "type": "string",
+              "description": "行业代码",
+              "example": "370000",
+              "items": { "type": "string" },
+              "default": "370000"
+            },
+            "minRelevance": {
+              "type": "integer",
+              "description": "实体的相关度下限。\n最小值: 1;\n最大值: 6;",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            }
+          },
+          "required": []
+        }
+      },
+      {
+        "name": "list_stock_cash_flows",
+        "title": "现金流表",
+        "description": "通过股票代码查询沪深京股票的现金流量数据，包括母公司期初/期末金额、合并期初/期末金额等核心财务指标，支持按报告日期范围筛选，适用于财务分析和投资决策。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "beginDate": {
+              "type": "string",
+              "description": "开始日期（格式yyyy-MM-dd）。\n最小值: 2020-01-01;",
+              "example": "2020-01-01",
+              "items": { "type": "string" },
+              "default": "2020-01-01"
+            },
+            "endDate": {
+              "type": "string",
+              "description": "结束日期（格式yyyy-MM-dd）",
+              "example": null,
+              "items": { "type": "string" },
+              "default": null
+            },
+            "pageSize": {
+              "type": "integer",
+              "description": "页长。\n最小值: 1;\n最大值: 500;",
+              "example": 10,
+              "items": { "type": "integer" },
+              "default": 10
+            },
+            "pageNum": {
+              "type": "integer",
+              "description": "页码。\n最小值: 1;",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "002594",
+              "items": { "type": "string" },
+              "default": "002594"
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "list_stock_income_statements",
+        "title": "利润表",
+        "description": "通过股票代码查询指定股票的利润详情，包括母公司期初数、期末数，合并期初数、期末数等核心财务数据，适用于财务分析和股票投资决策。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "beginDate": {
+              "type": "string",
+              "description": "开始日期（格式yyyy-MM-dd）。\n最小值: 2020-01-01;",
+              "example": "2020-01-01",
+              "items": { "type": "string" },
+              "default": "2020-01-01"
+            },
+            "endDate": {
+              "type": "string",
+              "description": "结束日期（格式yyyy-MM-dd）",
+              "example": "2025-03-30",
+              "items": { "type": "string" },
+              "default": "2025-03-30"
+            },
+            "pageSize": {
+              "type": "integer",
+              "description": "页长。\n最小值: 1;\n最大值: 500;",
+              "example": 10,
+              "items": { "type": "integer" },
+              "default": 10
+            },
+            "pageNum": {
+              "type": "integer",
+              "description": "页码。\n最小值: 1;",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "002594",
+              "items": { "type": "string" },
+              "default": "002594"
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "list_stock_balance_sheet",
+        "title": "资产负债表",
+        "description": "通过股票代码查询指定沪深京股票的资产负债表数据，包含母公司期初数、期末数、合并期初数、期末数等核心财务指标，同时提供报告日期、公司性质、科目代码等辅助信息，便于大模型进行财务分析和风险评估。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "beginDate": {
+              "type": "string",
+              "description": "开始日期（格式yyyy-MM-dd）。\n最小值: 2020-01-01;",
+              "example": "2020-01-01",
+              "items": { "type": "string" },
+              "default": "2020-01-01"
+            },
+            "endDate": {
+              "type": "string",
+              "description": "结束日期（格式yyyy-MM-dd）",
+              "example": "2025-01-01",
+              "items": { "type": "string" },
+              "default": "2025-01-01"
+            },
+            "pageSize": {
+              "type": "integer",
+              "description": "页长。\n最小值: 1;\n最大值: 500;",
+              "example": 10,
+              "items": { "type": "integer" },
+              "default": 10
+            },
+            "pageNum": {
+              "type": "integer",
+              "description": "页码。\n最小值: 1;",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "002594",
+              "items": { "type": "string" },
+              "default": "002594"
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "entity_recognition",
+        "title": "实体识别",
+        "description": "分析自然语言文本并提取出股票、行业、基金等实体信息，用于问题分类的精准判断。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "input": {
+              "type": "string",
+              "description": "待识别的自然语言",
+              "example": "贵州茅台怎么样？",
+              "items": { "type": "string" },
+              "default": "贵州茅台怎么样？"
+            }
+          },
+          "required": ["input"]
+        }
+      },
+      {
+        "name": "list_stock_adjusted_quotes",
+        "title": "股票前复权日行情",
+        "description": "通过股票代码查询指定股票的复权行情数据，支持按日期范围筛选，返回包括股票代码、名称、证券类型、市场类型、行情时间、昨收价、开盘价、最高价、最低价、最新价、成交量、成交金额等核心数据，适用于股票历史行情分析和趋势研究。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "beginDate": {
+              "type": "string",
+              "description": "开始日期（格式yyyy-MM-dd）。\n最小值: 2020-01-01;",
+              "example": "2020-01-01",
+              "items": { "type": "string" },
+              "default": "2020-01-01"
+            },
+            "endDate": {
+              "type": "string",
+              "description": "结束日期（格式yyyy-MM-dd）",
+              "example": "2025-01-01",
+              "items": { "type": "string" },
+              "default": "2025-01-01"
+            },
+            "pageSize": {
+              "type": "integer",
+              "description": "页长。\n最小值: 1;\n最大值: 500;",
+              "example": 10,
+              "items": { "type": "integer" },
+              "default": 10
+            },
+            "pageNum": {
+              "type": "integer",
+              "description": "页码。\n最小值: 1;",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "002594",
+              "items": { "type": "string" },
+              "default": "002594"
+            }
+          },
+          "required": ["stockCode"]
+        }
+      },
+      {
+        "name": "get_fund_quote_realtime",
+        "title": "ETF最新实时日行情",
+        "description": "通过基金代码获取ETF基金的最新实时行情数据，包括基金代码、名称、市场类型、开盘价、昨日收盘价、当前价格、涨跌幅、最高价、最低价、数据时间和系统时间等核心数据，适用于实时监控ETF基金的市场表现和价格变动。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "fundCode": {
+              "type": "string",
+              "description": "基金代码",
+              "example": "159001",
+              "items": { "type": "string" },
+              "default": "159001"
+            }
+          },
+          "required": ["fundCode"]
+        }
+      },
+      {
+        "name": "search_industry_report_rag",
+        "title": "行业研报搜索",
+        "description": "通过自然语言查询、研报ID、发布时间范围、标题模糊匹配或行业代码等多条件组合检索行业研报内容，返回匹配的研报片段及其相似度得分、发布时间、标题、行业代码等核心信息，便于快速定位相关行业深度分析资料。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "beginPubTime": {
+              "type": "string",
+              "description": "开始发布时间(格式yyyy-MM-dd HH:mm:ss)",
+              "example": "2025-01-01 00: 00: 00",
+              "items": { "type": "string" },
+              "default": "2025-01-01 00: 00: 00"
+            },
+            "endPubTime": {
+              "type": "string",
+              "description": "结束发布时间(格式yyyy-MM-dd HH:mm:ss)",
+              "example": "2025-02-01 00: 00: 00",
+              "items": { "type": "string" },
+              "default": "2025-02-01 00: 00: 00"
+            },
+            "top": {
+              "type": "integer",
+              "description": "返回结果数量(默认: 10，最大50)",
+              "example": 10,
+              "items": { "type": "integer" },
+              "default": 10
+            },
+            "query": {
+              "type": "string",
+              "description": "查询内容",
+              "example": "贵州茅台的净利润率",
+              "items": { "type": "string" },
+              "default": "贵州茅台的净利润率"
+            },
+            "guid": {
+              "type": "string",
+              "description": "研报id",
+              "example": "8D1A8C5D-41C3-4B2D-BE8A-6138CA324E76",
+              "items": { "type": "string" },
+              "default": "8D1A8C5D-41C3-4B2D-BE8A-6138CA324E76"
+            },
+            "title": {
+              "type": "string",
+              "description": "标题(模糊匹配)",
+              "example": "贵州茅台",
+              "items": { "type": "string" },
+              "default": "贵州茅台"
+            },
+            "industryCodeLv3": {
+              "type": "string",
+              "description": "行业代码(申万三级)",
+              "example": "110101",
+              "items": { "type": "string" },
+              "default": "110101"
+            }
+          },
+          "required": ["query"]
+        }
+      },
+      {
+        "name": "list_stock_special_notices",
+        "title": "证券特别提示",
+        "description": "通过股票代码和日期范围查询沪深京股票的特别提示信息，包括股票名称、上市状态、特别处理状态、变动原因、相关日期等核心公告数据，用于监控股票重大事件和风险提示。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "beginDate": {
+              "type": "string",
+              "description": "开始日期（格式yyyy-MM-dd）。\n最小值: 2020-01-01;",
+              "example": "2020-01-01",
+              "items": { "type": "string" },
+              "default": "2020-01-01"
+            },
+            "endDate": {
+              "type": "string",
+              "description": "结束日期（格式yyyy-MM-dd）",
+              "example": "2025-01-01",
+              "items": { "type": "string" },
+              "default": "2025-01-01"
+            },
+            "pageSize": {
+              "type": "integer",
+              "description": "页长。\n最小值: 1;\n最大值: 500;",
+              "example": 10,
+              "items": { "type": "integer" },
+              "default": 10
+            },
+            "pageNum": {
+              "type": "integer",
+              "description": "页码。\n最小值: 1;",
+              "example": 1,
+              "items": { "type": "integer" },
+              "default": 1
+            },
+            "stockCode": {
+              "type": "string",
+              "description": "股票代码",
+              "example": "000001",
+              "items": { "type": "string" },
+              "default": "000001"
+            }
+          },
+          "required": ["stockCode"]
+        }
+      }
+    ]
+  }
+}
