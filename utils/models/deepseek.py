@@ -13,7 +13,8 @@ def _chat_stream(prompt, mcp_max_call=20, thinking=True):
     system_prompt = (
         "你是专业的A股分析助手。\n"
         "当用户询问具体股票的实时价格/涨跌幅/成交量等最新行情时，必须优先调用相关工具获取最新数据后再分析，你最多只能调用1个工具"
-        "禁止凭空猜测实时行情。"
+        "禁止凭空猜测实时行情。\n"
+        "This model's maximum context length is 131072 tokens. "
     )
     messages = [
         {"role": "system", "content": system_prompt},
