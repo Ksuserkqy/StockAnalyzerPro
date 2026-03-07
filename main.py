@@ -13,7 +13,7 @@ if os.getenv('DEBUG', 'False').lower() == 'true':
     app.config['DEBUG'] = True
     host = "0.0.0.0"
     CORS(app, 
-        resources={r"/*": {"origins": "*"}}, 
+        resources={r"/*": {"origins": ["https://whisper.ksuser.cn", "http://localhost:*", "http://127.0.0.1:*", "http://106.14.221.14"],}}, 
         supports_credentials=True
     )
 else:
