@@ -14,7 +14,7 @@ if os.getenv('DEBUG', 'False').lower() == 'true':
     host = "0.0.0.0"
     CORS(app, 
         resources={r"/*": {"origins": ["https://whisper.ksuser.cn", "https://muyewhisper.cn", "https://www.muyewhisper.cn", "https://www.muyewhisper.cn", "http://localhost:*", "http://127.0.0.1:*", "http://106.14.221.14"],}}, 
-        supports_credentials=True1
+        supports_credentials=True
     )
 else:
     host = "127.0.0.1"
